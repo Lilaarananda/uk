@@ -1,0 +1,54 @@
+program uji1coba;
+uses crt;
+const
+N:integer=10;
+var 
+T:array[1..10] of integer;
+i,j:integer;
+
+procedure BacaArray();
+begin 
+for i:=1 to N do
+begin
+write('Masukkan elemen ke-', i, ':');
+read(T[i]);
+end;
+end;
+
+procedure CetakArray();
+begin
+for i:=1 to N do
+write(T[i], ' ');
+end;
+
+function SortArray():boolean;
+var
+temp:integer;
+urut:boolean;
+begin
+urut:=true;
+for i:= 1 to N do
+for j:= 1 to N-1 do
+if T[j] > T[j+1] then
+begin
+temp:=T[j];
+T[j]:=T[j+1];
+T[j+1]:=temp;
+urut:=false;
+end;
+SortArray:=urut;
+end;
+
+begin
+  clrscr;
+  BacaArray();
+  CetakArray();
+  if(SortArray=true) then
+  writeln('arraay sudah urut')
+  else
+  begin
+  writeln('sorting dilakukan');
+  CetakArray();
+  end;
+  read;
+end.
